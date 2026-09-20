@@ -1,0 +1,25 @@
+# ==========================================
+# Color Detection Dashboard - Dependencies
+# ==========================================
+
+# ------------------------------------------
+# Python Dependencies (OpenCV & Vision Scripts)
+# Install using: pip install -r requirements.txt
+# ------------------------------------------
+opencv-python>=4.8.0.76
+numpy>=1.24.0
+
+# ------------------------------------------
+# Node.js / Web Dashboard Dependencies
+# Install using: npm install
+# (Managed via package.json)
+# ------------------------------------------
+# Node.js runtime: v18+ or v20+ recommended
+# Key npm packages:
+#   - react (^19.2.8)
+#   - react-dom (^19.2.8)
+#   - vite (^8.2.2)
+#   - @vitejs/plugin-react (^6.1.0)
+#   - babel-plugin-react-compiler (^1.0.0)
+#   - @rolldown/plugin-babel (^0.2.3)
+

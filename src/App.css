@@ -1,0 +1,648 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: #090d12;
+  color: #f0f6fc;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 24px;
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #1e2936;
+}
+
+.header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #58a6ff;
+}
+
+.header p {
+  color: #8b949e;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.header-status-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.system-status,
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #3fb950;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3fb950;
+  box-shadow: 0 0 8px rgba(63, 185, 80, 0.6);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.status-dot.disconnected {
+  background: #f85149;
+  box-shadow: 0 0 8px rgba(248, 81, 73, 0.6);
+}
+
+.test-toggle-btn {
+  background: #1f2937;
+  color: #c9d1d9;
+  border: 1px solid #374151;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.test-toggle-btn:hover {
+  background: #283548;
+  border-color: #58a6ff;
+  color: #ffffff;
+}
+
+.test-toggle-btn.active {
+  background: rgba(88, 166, 255, 0.15);
+  color: #58a6ff;
+  border-color: #58a6ff;
+  box-shadow: 0 0 10px rgba(88, 166, 255, 0.2);
+}
+
+/* DASHBOARD LAYOUT */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 20px;
+}
+
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CARD */
+.card {
+  background: #111822;
+  border: 1px solid #222f3e;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-header h2 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #e6edf3;
+}
+
+.card-header p {
+  color: #8b949e;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.color-indicator-chip {
+  padding: 4px 14px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.5px;
+}
+
+/* IP CONFIG BAR */
+.ip-config-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+  background: #0d131a;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #1e2936;
+  font-size: 13px;
+}
+
+.ip-config-bar label {
+  color: #8b949e;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ip-config-bar input {
+  flex: 1;
+  background: #161f2c;
+  border: 1px solid #2a3749;
+  color: #e6edf3;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: monospace;
+  outline: none;
+}
+
+.ip-config-bar input:focus {
+  border-color: #58a6ff;
+}
+
+.connect-btn {
+  background: #238636;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.connect-btn:hover {
+  background: #2ea043;
+}
+
+/* CAMERA VIEWPORT */
+.camera-card {
+  min-height: 480px;
+}
+
+.camera-container {
+  width: 100%;
+  height: 420px;
+  background: #070a0e;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #1e2936;
+  position: relative;
+}
+
+.camera-feed-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* OFFLINE NOTICE OVERLAY */
+.camera-offline-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(9, 13, 18, 0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+  z-index: 10;
+}
+
+.camera-offline-overlay h3 {
+  font-size: 20px;
+  color: #f85149;
+  margin-bottom: 10px;
+}
+
+.camera-offline-overlay p {
+  color: #8b949e;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.camera-offline-overlay code {
+  background: #161f2c;
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: #79c0ff;
+  font-family: monospace;
+}
+
+.retry-btn {
+  background: #238636;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.retry-btn:hover {
+  background: #2ea043;
+}
+
+/* ==========================================
+   ROBOTIC ARM SERIAL CONTROL CARD
+   ========================================== */
+.serial-control-card {
+  background: #111822;
+}
+
+.auto-serial-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #8b949e;
+  cursor: pointer;
+}
+
+.auto-serial-toggle input {
+  accent-color: #58a6ff;
+  cursor: pointer;
+}
+
+/* SERIAL PORT BAR */
+.serial-port-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: #0d131a;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #1e2936;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.serial-port-bar label {
+  font-size: 12px;
+  color: #8b949e;
+  font-weight: 600;
+}
+
+.serial-port-bar select {
+  flex: 1;
+  min-width: 120px;
+  background: #161f2c;
+  border: 1px solid #2a3749;
+  color: #e6edf3;
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: monospace;
+  outline: none;
+}
+
+.serial-port-bar select:focus {
+  border-color: #58a6ff;
+}
+
+.refresh-btn {
+  background: #21262d;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.refresh-btn:hover {
+  background: #30363d;
+  color: #ffffff;
+}
+
+.webserial-btn {
+  background: #1f6feb;
+  color: white;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.webserial-btn:hover {
+  background: #388bfd;
+}
+
+.disconnect-btn {
+  background: #442226;
+  border: 1px solid #6e272a;
+  color: #ff7b72;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.disconnect-btn:hover {
+  background: #5d252a;
+}
+
+/* THE 4 COMMAND BUTTONS GRID */
+.command-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.cmd-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #161f2c;
+  border: 1px solid #2a3749;
+  border-radius: 10px;
+  color: #f0f6fc;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.cmd-btn .btn-icon {
+  font-size: 22px;
+}
+
+.cmd-btn .btn-text strong {
+  display: block;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+.cmd-btn .btn-text small {
+  display: block;
+  font-size: 11px;
+  color: #8b949e;
+  margin-top: 2px;
+}
+
+/* START BUTTON */
+.cmd-start:hover,
+.cmd-start.active {
+  background: rgba(88, 166, 255, 0.15);
+  border-color: #58a6ff;
+  box-shadow: 0 0 12px rgba(88, 166, 255, 0.25);
+}
+
+.cmd-start strong {
+  color: #58a6ff;
+}
+
+/* CHECK BUTTON */
+.cmd-check:hover,
+.cmd-check.active {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+}
+
+.cmd-check strong {
+  color: #38bdf8;
+}
+
+/* RED BUTTON */
+.cmd-red:hover,
+.cmd-red.active {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.3);
+}
+
+.cmd-red strong {
+  color: #ef4444;
+}
+
+/* GREEN BUTTON */
+.cmd-green:hover,
+.cmd-green.active {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: #22c55e;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
+}
+
+.cmd-green strong {
+  color: #22c55e;
+}
+
+/* SERIAL CONSOLE MONITOR */
+.serial-console {
+  background: #080c10;
+  border: 1px solid #1c2633;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.console-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  background: #0f1620;
+  border-bottom: 1px solid #1c2633;
+  font-size: 11px;
+  color: #8b949e;
+  font-family: monospace;
+}
+
+.clear-console-btn {
+  background: transparent;
+  border: none;
+  color: #6e7681;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.clear-console-btn:hover {
+  color: #c9d1d9;
+}
+
+.console-body {
+  padding: 10px 12px;
+  height: 110px;
+  overflow-y: auto;
+  font-family: Consolas, Monaco, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.console-line {
+  color: #7ee787;
+  word-break: break-all;
+}
+
+/* OBJECT DETECTION */
+.detection-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.detection-item {
+  background: #0d131a;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #1a2330;
+}
+
+.detection-item span,
+.stat span {
+  display: block;
+  color: #8b949e;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.detection-item strong {
+  font-size: 19px;
+  font-family: monospace;
+}
+
+/* FUNCTIONAL COLOR COUNTER (NO YELLOW) */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.stat {
+  background: #0d131a;
+  padding: 18px;
+  border-radius: 8px;
+  border: 1px solid #1a2330;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-red {
+  border-left: 5px solid #ef4444;
+}
+
+.stat-red strong {
+  color: #ef4444;
+}
+
+.stat-green {
+  border-left: 5px solid #22c55e;
+}
+
+.stat-green strong {
+  color: #22c55e;
+}
+
+.stat-blue {
+  border-left: 5px solid #3b82f6;
+}
+
+.stat-blue strong {
+  color: #3b82f6;
+}
+
+.stat strong {
+  font-size: 32px;
+  font-family: monospace;
+}
+
+.reset-btn {
+  background: transparent;
+  border: 1px solid #2b3b4e;
+  color: #8b949e;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.reset-btn:hover {
+  background: #1f2a38;
+  color: #f0f6fc;
+  border-color: #58a6ff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .command-buttons-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding: 14px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .command-buttons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ip-config-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
